@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "1bbe0dff-b163-48ba-87fe-37bbcbfb4f1b",
+		"name": "patient-appointment-system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10715400"
+	},
+	"item": [
+		{
+			"name": "appointments",
+			"item": [
+				{
+					"name": "getAvailableAppointments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{appointment-system}}/api/v1/appointments?date=2022-10-29&doctor-id=1",
+							"host": [
+								"{{appointment-system}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"appointments"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-10-29"
+								},
+								{
+									"key": "doctor-id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reserveAppointment",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 3,\r\n    \"patientId\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{appointment-system}}/api/v1/appointments",
+							"host": [
+								"{{appointment-system}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"appointments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAppointmentsByPatient",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{appointment-system}}/api/v1/appointments/patients/1",
+							"host": [
+								"{{appointment-system}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"appointments",
+								"patients",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "timetable",
+			"item": [
+				{
+					"name": "createAppointments",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\"\r\n\t\t\t\t  xmlns:gs=\"http://www.tkachev.com/patientappointmentsystem/soap/gen\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n        <gs:createTimetableRequest>\r\n            <gs:date>2022-10-30</gs:date>\r\n            <gs:doctorId>2</gs:doctorId>\r\n            <gs:startTime>10:00:00</gs:startTime>\r\n            <gs:duration>30</gs:duration>\r\n            <gs:amount>5</gs:amount>\r\n      </gs:createTimetableRequest>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{appointment-system}}/ws/timetable",
+							"host": [
+								"{{appointment-system}}"
+							],
+							"path": [
+								"ws",
+								"timetable"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "appointment-system",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
