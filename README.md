@@ -1,6 +1,6 @@
-# Final Project
+# Patient Appointment System (SOAP, REST, Spring Boot)
 
-Built RESTful API for an ad board using Spring Boot, PostgreSQL, Spring Security, Spring Data, JPA, Rest API, JUnit, MapStruct, Luquibase, Swagger, Spring Validation.
+Built RESTful API for an appointment system using Spring Boot, PostgreSQL, Spring Data, JPA, Rest API, SOAP, MapStruct, Luquibase, Swagger, Spring Validation.
 
 ## Steps to Setup
 
@@ -19,7 +19,7 @@ create database appointment_system
 **3. Change PostgreSQL username and password as per your installation**
 
 + open `src/main/resources/application.properties`
-+ change `spring.datasource.username` and `spring.datasource.password` as per your mysql installation
++ change `spring.datasource.username` and `spring.datasource.password` as per your postgresql installation
 
 **4. Run the app using Maven**
 
